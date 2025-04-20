@@ -1,0 +1,38 @@
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn: "Financial Connections"
+- tapOn: "Collect Bank Account"
+- assertVisible:
+    text: "Collect token"
+- tapOn:
+    text: "Collect token"
+    retryTapIfNoChange: false
+- assertVisible:
+    text: "Agree and continue"
+- tapOn: "Agree and continue"
+- assertVisible:
+    text: "Test Institution"
+- tapOn: "Test Institution"
+- extendedWaitUntil:
+    # wait for the auth flow to finish
+    visible: "Select account"
+    timeout: 60000
+- assertVisible:
+    text: "Connect account"
+- tapOn: "Connect account"
+- tapOn:
+    # Hide the keyboard if it shows up
+    text: "Done"
+    optional: true
+- assertVisible:
+    text: "Not now"
+- tapOn: "Not now"
+- assertVisible:
+    text: "Done"
+- tapOn: "Done"
+- assertVisible:
+    text: "Success"
+- tapOn:
+    text: "OK"
+    optional: true
